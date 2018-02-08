@@ -5,7 +5,7 @@ final class CardIO{
     if (CardValdation.validation(cardInputId)){
       Card card = new Card(cardInputId);
 
-
+      
       System.out.println(card.toString());
     }
     else{

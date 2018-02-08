@@ -20,4 +20,5 @@ class CardValdation{
 
     return result;
   }
+
 }
