@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+
 
 class Card{
   private String num;
@@ -17,6 +19,12 @@ class Card{
     String type;
     // System.out.println(len);
     // System.out.println(firstTwoLet);
+    CardTypesCall cardTypesCall = new CardTypesCall();
+
+    ArrayList<TypeCardFormat> ruleSet = cardTypesCall.getListOfTypes();
+
+    System.out.println(ruleSet.get(0).getTypeName());
+
     //temporary
     switch(this.length){
       case 13:
@@ -69,6 +77,18 @@ class Card{
     }
 
     return sum % 10 == 0;
+  }
+
+  public boolean getLuhnCheck(){
+    return this.luhnRes;
+  }
+
+  public String getNum(){
+    return this.num;
+  }
+
+  public String getType(){
+    return this.type;
   }
 
   @Override

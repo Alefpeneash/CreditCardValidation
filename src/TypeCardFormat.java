@@ -1,29 +1,31 @@
+
+
 class TypeCardFormat{
   private String typeName;
   private int mfulNumQuan;
-  private int lengths[];
-  private int beginsOfNum[];
+  private int[] lengths;
+  private int[] beginsOfNum;
 
-  TypeCardFormat(String typeName, int beginsOfNum[], int lengths[]){
+  TypeCardFormat(String typeName, int[] beginsOfNum, int[] lengths){
     this.typeName = typeName;
-    this.length = lengths;
+    this.lengths = lengths;
     this.beginsOfNum = beginsOfNum;
-    mfulNumQuan = Math.ceil(Math.log10(beginsOfNum[0]));
+    this.mfulNumQuan = Math.ceil(Math.log10(beginsOfNum[0]));
   }
 
   public String getTypeName(){
     return this.typeName;
   }
 
-  public String getMfulNumQuan(){
+  public int getMfulNumQuan(){
     return this.mfulNumQuan;
   }
 
-  public String getLengths(){
-    return this.length;
+  public int[] getLengths(){
+    return this.lengths;
   }
 
-  public String getBeginsOfNum(){
+  public int[] getBeginsOfNum(){
     return this.beginsOfNum;
   }
 }

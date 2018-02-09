@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project name="CreditCardValidation" default="run">
+  <property name="property.file" value="p.properties"/>
+	<property file="${property.file}"/>
+
+  <local name="md5" />
+	<local name="sha1" />
+
+  <target name="compile">
+		<mkdir dir="${classes}"/>
+		<javac destdir="${classes}" includeantruntime="false">
+			<src path="${gsrc}"/>
+		</javac>
+	</target>
+
+  <target name="build" depends="compile">
+  		<jar destfile = "${build}/${ant.project.name}.jar" basedir="${classes}">
+  			<manifest>
+  				<attribute name="Main–Class" value="${ant.project.name}"/>
+  				<attribute name="Manifest-Version" value="1.0"/>
+  			</manifest>
+  		</jar>
+  </target>
+
+  <target name="clean">
+		<delete dir="build"/>
+		<delete dir="src1"/>
+	</target>
+
+</project>
