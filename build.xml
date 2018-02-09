@@ -9,22 +9,45 @@
   <target name="compile">
 		<mkdir dir="${classes}"/>
 		<javac destdir="${classes}" includeantruntime="false">
-			<src path="${gsrc}"/>
+			<src path="${src}"/>
 		</javac>
 	</target>
 
   <target name="build" depends="compile">
   		<jar destfile = "${build}/${ant.project.name}.jar" basedir="${classes}">
   			<manifest>
-  				<attribute name="Main–Class" value="${ant.project.name}"/>
+  				<attribute name="Main-Class" value="CardIO"/>
   				<attribute name="Manifest-Version" value="1.0"/>
   			</manifest>
   		</jar>
   </target>
 
+  <target name="test" depends="build" >
+    <mkdir dir="${tRes}"/>
+
+        <javac destdir="${classes}" includes="*.java" includeantruntime="false" classpath = "${lib}" >
+          <src path="${src}"/>
+        </javac>
+
+      <junit fork="yes" haltonfailure="yes">
+      <classpath>
+        <pathelement location="${classes}"/>
+      </classpath>
+
+      <test name="tTask" todir="${tRes}">
+        <formatter type="plain" usefile="true" />
+      </test>
+    </junit>
+  </target>
+
+  <target name = "run" depends="build">
+    <java jar="${build}/${ant.project.name}.jar"  fork='true'>
+    </java>
+  </target>
+
   <target name="clean">
 		<delete dir="build"/>
-		<delete dir="src1"/>
+		<delete dir="src"/>
 	</target>
 
 </project>

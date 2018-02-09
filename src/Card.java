@@ -19,11 +19,11 @@ class Card{
     String type;
     // System.out.println(len);
     // System.out.println(firstTwoLet);
-    CardTypesCall cardTypesCall = new CardTypesCall();
-
-    ArrayList<TypeCardFormat> ruleSet = cardTypesCall.getListOfTypes();
-
-    System.out.println(ruleSet.get(0).getTypeName());
+    // CardTypesCall cardTypesCall = new CardTypesCall();
+    //
+    // ArrayList<TypeCardFormat> ruleSet = cardTypesCall.getListOfTypes();
+    //
+    // System.out.println(ruleSet.get(0).getTypeName());
 
     //temporary
     switch(this.length){
