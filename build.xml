@@ -3,9 +3,6 @@
   <property name="property.file" value="p.properties"/>
 	<property file="${property.file}"/>
 
-  <local name="md5" />
-	<local name="sha1" />
-
   <target name="compile">
 		<mkdir dir="${build}/res"/>
     <javac destdir="${build}/res" includeantruntime="false">
@@ -46,10 +43,7 @@
     </junit>
   </target>
 
-  <target name = "run" depends="build">
-    <java jar="${build}/${ant.project.name}.jar"  fork='true'>
-    </java>
-  </target>
+
 
   <target name="clean">
 		<delete dir="build"/>

@@ -3,12 +3,11 @@ package classes.card;
 import java.io.*;
 import java.util.ArrayList;
 
-
 public class Card{
   private String num;
   private String type;
-  private boolean luhnRes;
-  private int length;
+  private boolean luhnRes;//Luhn algorithm result
+  private int length;//lenth of card number
 
   public Card(String num){
     this.num = num;
@@ -17,18 +16,11 @@ public class Card{
     this.luhnRes = luhnCheck();
   }
 
-
+//Method that determines the type
+//It should be redone because for now it's ugly hardcode
   private String typeDefine(){
     String firstTwoLet = this.num.substring(0,2);
     String type;
-    // System.out.println(len);
-    // System.out.println(firstTwoLet);
-    // CardTypesCall cardTypesCall = new CardTypesCall();
-    //
-    // ArrayList<TypeCardFormat> ruleSet = cardTypesCall.getListOfTypes();
-    //
-    // System.out.println(ruleSet.get(0).getTypeName());
-
     //temporary
     switch(this.length){
       case 13:
@@ -62,6 +54,7 @@ public class Card{
     return type;
   }
 
+//Private method for validation by Luhn algorithm
   private boolean luhnCheck(){
     String numArr[]  = num.split("");
     int numIntArr[] = new int[this.length];
