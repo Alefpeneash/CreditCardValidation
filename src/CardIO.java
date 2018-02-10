@@ -1,3 +1,4 @@
+package classes.card;
 
 class CardIO{
   public static void main(String[] args) {
@@ -8,7 +9,7 @@ class CardIO{
       System.out.println(card.toString());
     }
     else{
-      System.out.println("fuck you");
+      System.out.println("Input error");
     }
   }
 }

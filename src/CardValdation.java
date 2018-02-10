@@ -1,8 +1,10 @@
+package classes.card;
+
 import java.io.*;
 import java.lang.Iterable;
 
 class CardValdation{
-  public static boolean validation(String ID){
+  protected static boolean validation(String ID){
     boolean result = true;
 
     if (ID.length() > 16){

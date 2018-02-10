@@ -7,36 +7,42 @@
 	<local name="sha1" />
 
   <target name="compile">
-		<mkdir dir="${classes}"/>
-		<javac destdir="${classes}" includeantruntime="false">
+		<mkdir dir="${build}/res"/>
+    <javac destdir="${build}/res" includeantruntime="false">
 			<src path="${src}"/>
 		</javac>
 	</target>
 
   <target name="build" depends="compile">
-  		<jar destfile = "${build}/${ant.project.name}.jar" basedir="${classes}">
+  		<jar destfile = "${build}/${ant.project.name}.jar" basedir="${build}/res">
   			<manifest>
-  				<attribute name="Main-Class" value="CardIO"/>
+  				<attribute name="Main-Class" value="classes.card.CardIO"/>
   				<attribute name="Manifest-Version" value="1.0"/>
   			</manifest>
   		</jar>
   </target>
 
+  <path id="classpath">
+       <fileset dir="lib" includes="junit-4.12.jar"/>
+  </path>
+
   <target name="test" depends="build" >
     <mkdir dir="${tRes}"/>
 
-        <javac destdir="${classes}" includes="*.java" includeantruntime="false" classpath = "${lib}" >
-          <src path="${src}"/>
+        <javac destdir="build/res" includes="*.java" includeantruntime="false" classpathref="classpath">
+          <src path="tests"/>
         </javac>
 
-      <junit fork="yes" haltonfailure="yes">
+      <junit  printsummary="on" haltonfailure="yes" fork="true">
+        <test name="classes.testcard.TestCard" todir="${tRes}">
+          <formatter type="plain" usefile="true" />
+        </test>
       <classpath>
-        <pathelement location="${classes}"/>
+        <pathelement location="lib/junit-4.12.jar"/>
+        <pathelement location="lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="build/res"/>
       </classpath>
 
-      <test name="tTask" todir="${tRes}">
-        <formatter type="plain" usefile="true" />
-      </test>
     </junit>
   </target>
 
@@ -47,7 +53,6 @@
 
   <target name="clean">
 		<delete dir="build"/>
-		<delete dir="src"/>
 	</target>
 
 </project>

@@ -1,19 +1,23 @@
+package classes.card;
+
 import java.io.*;
 import java.util.ArrayList;
 
 
-class Card{
+public class Card{
   private String num;
   private String type;
   private boolean luhnRes;
   private int length;
 
-  Card(String num){
+  public Card(String num){
     this.num = num;
     this.length = this.num.length();
     this.type = typeDefine();
     this.luhnRes = luhnCheck();
   }
+
+
   private String typeDefine(){
     String firstTwoLet = this.num.substring(0,2);
     String type;
