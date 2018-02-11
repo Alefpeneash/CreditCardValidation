@@ -1,4 +1,6 @@
-This program is needed to identify the type of card and validate its number using the Luhn algorithm.
+## Essence :
+
+This program is needed to identify the type of card and validate its number using the Luhn algorithm.(In essence should be used as a module for some larger program)
 
 ## Required software :
 * java 1.8 openjdk

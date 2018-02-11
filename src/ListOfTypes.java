@@ -1,8 +1,13 @@
 package classes.card;
 
+/*
+class which is a pseudo database from which we can in particular
+obtain information about the parameters of the defining
+*/
+
 class ListOfTypes{
   private static  TypeCardFormat[] tcfArr = new TypeCardFormat[4];
-
+  //initializing instances of a class
   public static void init(){
     int[] bon = new int[] {34, 37};
     int[] len = new int[] {15};
@@ -24,7 +29,7 @@ class ListOfTypes{
     TypeCardFormat visa = new TypeCardFormat("Visa", bon, len);
     tcfArr[3] = visa;
   }
-
+  //method that is used to retrieve information from a pseudo database
   public static TypeCardFormat[] get(){
     return tcfArr;
   }

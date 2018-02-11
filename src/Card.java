@@ -17,8 +17,12 @@ public class Card{
   }
 
 //Method that determines the type
+//checks against data received from a pseudo database.
+//This approach is used to avoid hardcode and for greater flexibility of the program.
+//So to add new types of cards we don't need to change the code here but simply add
+//a new type to the database.
   private String typeDefine(){
-    String mfulNums;// = this.num.substring(0,2);
+    String mfulNums;
     String type;
 
     boolean lenCheck;
@@ -32,25 +36,19 @@ public class Card{
       lenCheck = false;
       mfulNumsCheck = false;
 
-      // int[] bon = tcfArr[i].getBeginsOfNum();
-      // //mfulNumsCheck = bon.contains(mfulNums);
-      // //mfulNumsCheck = IntStream.of(bon).anyMatch(x -> x == mfulNums);
-      //
-      // int[] lens = tcfArr[i].getLengths();
-      // //lenCheck = lens.contains(this.length);
-      // lenCheck = IntStream.of(lens).anyMatch(x -> x == lenCheck);
-
       int[] bon = tcfArr[i].getBeginsOfNum();
       for(int j = 0; j < bon.length; j++){
         if(Integer.toString(bon[j]).equals(mfulNums)){
-          mfulNumsCheck = true;
+            mfulNumsCheck = true;
+            break;
         }
       }
 
       int[] lens = tcfArr[i].getLengths();
       for(int k = 0; k < lens.length; k++){
         if(this.length == lens[k]){
-          lenCheck = true;
+            lenCheck = true;
+            break;
         }
       }
 
@@ -98,7 +96,7 @@ public class Card{
 
   @Override
   public String toString(){
-    return "Card: " + this.num + " Type: " + this.type + " Luhn check: " + (luhnRes ? "valid" : "invalid");
+    return "Card: " + this.num + "; Type: " + this.type + "; Luhn check: " + (luhnRes ? "valid" : "invalid");
   }
 
 }

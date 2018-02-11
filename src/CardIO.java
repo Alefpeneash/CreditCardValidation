@@ -5,9 +5,6 @@ class CardIO{
   public static void main(String[] args) {
     String cardInputId = args[0];
 
-    // ListOfTypes.init();
-    // TypeCardFormat[] tcfa = ListOfTypes.get();
-
 // In if called general validation method
     if (CardValdation.validation(cardInputId)){
 // Create an card object with given card number

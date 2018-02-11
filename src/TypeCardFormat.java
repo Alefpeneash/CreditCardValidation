@@ -1,5 +1,6 @@
 package classes.card;
 
+//Class that is used as the essence of the type definition format in the pseudo database
 class TypeCardFormat{
   private String typeName;
   private int mfulNumQuan;
