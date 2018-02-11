@@ -17,47 +17,49 @@ public class Card{
   }
 
 //Method that determines the type
-//It should be redone because for now it's ugly hardcode
   private String typeDefine(){
-    String firstTwoLet = this.num.substring(0,2);
+    String mfulNums;// = this.num.substring(0,2);
     String type;
+
+    boolean lenCheck;
+    boolean mfulNumsCheck;
 
     ListOfTypes.init();
     TypeCardFormat[] tcfArr = ListOfTypes.get();
 
-    
+    for(int i = 0; i < tcfArr.length; i++){
+      mfulNums = this.num.substring(0,tcfArr[i].getMfulNumQuan());
+      lenCheck = false;
+      mfulNumsCheck = false;
 
-    //temporary
-    switch(this.length){
-      case 13:
-        type = "Visa";
-        break;
-      case 15:
-        type = "AMEX";
-        break;
-      case 16:
-        switch(firstTwoLet.substring(0,1)){
-          case "4":
-            type = "Visa";
-            break;
-          case "5":
-            type = "MasterCard";
-            break;
-          case "6":
-            type = "Discover";
-            break;
-          default:
-            type = "Unknown";
-            break;
+      // int[] bon = tcfArr[i].getBeginsOfNum();
+      // //mfulNumsCheck = bon.contains(mfulNums);
+      // //mfulNumsCheck = IntStream.of(bon).anyMatch(x -> x == mfulNums);
+      //
+      // int[] lens = tcfArr[i].getLengths();
+      // //lenCheck = lens.contains(this.length);
+      // lenCheck = IntStream.of(lens).anyMatch(x -> x == lenCheck);
+
+      int[] bon = tcfArr[i].getBeginsOfNum();
+      for(int j = 0; j < bon.length; j++){
+        if(Integer.toString(bon[j]).equals(mfulNums)){
+          mfulNumsCheck = true;
         }
-        break;
-      default:
-        type = "Unknown";
-        break;
-    }
-    //temporary
+      }
 
-    return type;
+      int[] lens = tcfArr[i].getLengths();
+      for(int k = 0; k < lens.length; k++){
+        if(this.length == lens[k]){
+          lenCheck = true;
+        }
+      }
+
+      if(mfulNumsCheck && lenCheck){
+        return tcfArr[i].getTypeName();
+      }
+    }
+
+    return "Unknown";
   }
 
 //Private method for validation by Luhn algorithm

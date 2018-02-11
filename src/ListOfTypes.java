@@ -17,12 +17,12 @@ class ListOfTypes{
     bon = new int[] {51, 52, 53, 54, 55};
     len = new int[] {16};
     TypeCardFormat mastercard = new TypeCardFormat("MasterCard", bon, len);
-    tcfArr[2] = discover;
+    tcfArr[2] = mastercard;
 
     bon = new int[] {4};
     len = new int[] {13, 16};
     TypeCardFormat visa = new TypeCardFormat("Visa", bon, len);
-    tcfArr[3] = discover;
+    tcfArr[3] = visa;
   }
 
   public static TypeCardFormat[] get(){

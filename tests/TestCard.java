@@ -15,7 +15,7 @@ public class TestCard{
       boolean check = true;
 
       Card visaTest = new Card("4276550033998892");
-      Card masterCardTest = new Card("5725410414265870");
+      Card masterCardTest = new Card("5525410414265870");
 
       assertTrue(visaTest.getType() == "Visa");
       assertTrue(masterCardTest.getType() == "MasterCard");
