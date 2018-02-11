@@ -21,6 +21,12 @@ public class Card{
   private String typeDefine(){
     String firstTwoLet = this.num.substring(0,2);
     String type;
+
+    ListOfTypes.init();
+    TypeCardFormat[] tcfArr = ListOfTypes.get();
+
+    
+
     //temporary
     switch(this.length){
       case 13:
